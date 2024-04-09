@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { deleteQuizId, getQuiz, getQuizId, postQuiz, putQuizId } from "./controller/Quizcontroller.js";
 import mongoose from "mongoose";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -9,6 +10,7 @@ const port = process.env.PORT;
 const dbConnect = process.env.MONGO;
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({extended : false}));
 
 app.get("/api/quiz",getQuiz);
