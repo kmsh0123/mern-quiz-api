@@ -1,12 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
-import Router from "../backend/Router/QuizRouter.js"
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-app.use("/api/quiz",Router);
+app.get("/api/quiz",(req,res)=>{
+    res.send("Hello Get Method");
+});
+
+app.post("/api/quiz",(req,res)=>{
+    res.send("Hello Post Method");
+});
 
 app.use("/",(req,res)=>{
     res.send({message : "Hello From NodeJs Api"})
